@@ -1,0 +1,14 @@
+<VirtualHost *:84>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html
+
+    # Display server information
+    <Location "/">
+        SetEnv uptime <%= `uptime` %>
+        SetEnv heure <%= Time.now %>
+        SetEnv os <%= `lsb_release -ds` %>
+        SetEnv version <%= `lsb_release -rs` %>
+    </Location>
+
+    # ... Rest of the configuration ...
+</VirtualHost>
