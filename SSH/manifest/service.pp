@@ -1,7 +1,9 @@
-class apache::service {
-  service { $apache::params::service_name:
-    ensure    => running,
-    enable    => true,
-    subscribe => File[$apache::params::config_file],
+class ssh_configuration::service {
+  # Gestion du service SSH
+
+  service { 'ssh':
+    ensure => running,
+    enable => true,
+    require => Class['ssh_configuration::config'],
   }
 }

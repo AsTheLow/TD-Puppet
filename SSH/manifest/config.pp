@@ -1,10 +1,10 @@
-class apache::config {
-  file { $apache::params::config_file:
+class ssh_configuration::config {
+  # Gestion du fichier de configuration SSH en utilisant un template
+  
+  file { '/etc/ssh/sshd_config':
     ensure  => file,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    content => template('apache/apache.conf.erb'),
-    notify  => Class['apache::service'],
+    content => template('ssh_configuration/sshd_config.erb'),
+    require => Class['ssh_configuration::install'],
+    notify  => Class['ssh_configuration::service'],
   }
 }
