@@ -1,4 +1,5 @@
 # Puppet Project
+## Partie 2 : écriture des manifests et modules Puppet (4 heures)
 
 This project contains Puppet modules for configuring the **SSH**, **Apache**, and **NTP** services.
 
@@ -60,3 +61,95 @@ Replace "/path/to/your/module/" with the actual path to the directory containing
 
 **Note**: Make sure you have administrative privileges (**sudo**) to execute Puppet commands.
 
+
+
+## Partie 3 : Les environnements Puppet (2 heures)
+
+# Setting up Git Repository for Puppet Environments
+
+This repository is designed to manage Puppet environments using Git branches. The following branches represent different environments:
+
+- `production`: Production environment for validated modules.
+- `development`: Environment for code under development.
+- `test`: Environment for testing code before merging it into production.
+
+The `development` branch contains code that is currently being written, while the `test` branch holds code that is being tested. Once the code is validated in the `test` branch, it will be merged into the `production` branch.
+
+The Git development graph will reflect this structure. The `production` branch will be tagged with the name "1.0" when it contains validated modules from all three services.
+
+## Puppet Web Environment
+
+A new branch, `web`, has been created to represent the Puppet Web environment. This branch will be used for machines hosting websites and will include the Apache module.
+
+To modify the Apache module and make the deployed website display the following information:
+
+- Uptime of the machine
+- Current time
+- Operating system and its version
+
+Access the website at the following address: [http://localhost](http://localhost)
+
+## Instructions
+
+To get started with this Git repository, follow these steps:
+
+1. Clone the repository: `git clone [repository-url]`
+2. Create a new branch for the desired environment:
+   - Production: `git checkout -b production`
+   - Development: `git checkout -b development`
+   - Test: `git checkout -b test`
+   - Web: `git checkout -b web`
+3. Make necessary modifications or additions to the code.
+4. Commit your changes: `git commit -m "Add descriptive commit message"`
+5. Push the changes to the remote repository: `git push origin [branch-name]`
+
+Remember to merge validated changes from the `test` branch into the `production` branch once they have been tested and approved.
+
+# Puppet Environment Setup
+
+This repository contains the setup instructions for creating Puppet environments and deploying the Apache module. Follow the steps below to set up the environments and configure the Apache module.
+
+## Prerequisites
+
+- Git should be installed on your system.
+
+## Setup
+
+```bash
+# Make sure you are in the repository directory.
+
+# Create new branches for the Puppet environments
+git branch production
+git branch development
+git branch test
+
+# Switch to the production branch
+git checkout production
+
+# Make necessary modifications and validate the modules
+git add .
+git commit -m "Validated production modules"
+
+# Tag the version as 1.0
+git tag 1.0
+
+# Switch back to the development branch
+git checkout development
+
+# Create a new branch for the Puppet Web environment
+git branch web
+
+# Switch to the web branch
+git checkout web
+
+# Modify the Apache module to display requested information
+# Add and validate the changes
+git add .
+git commit -m "Updated Apache module"
+
+# Deploy the Apache module on the web servers
+
+# Accessing the Website
+# Replace <server_ip_address> with the actual IP address or domain name
+# of the web server hosting the site
+# Example: http://192.168.1.100
