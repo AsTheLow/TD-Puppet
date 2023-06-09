@@ -60,6 +60,3 @@ Replace "/path/to/your/module/" with the actual path to the directory containing
 
 **Note**: Make sure you have administrative privileges (**sudo**) to execute Puppet commands.
 
-Feel free to modify this README file according to your project's needs by adding additional information.
-
-If you have any further questions, please let me know!
