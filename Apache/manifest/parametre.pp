@@ -1,17 +1,5 @@
-class ntp::params {
-  case $::osfamily {
-    'Debian': {
-      $package_name = 'ntp'
-      $service_name = 'ntp'
-      $config_file = '/etc/ntp.conf'
-    }
-    'RedHat': {
-      $package_name = 'ntp'
-      $service_name = 'ntpd'
-      $config_file = '/etc/ntp.conf'
-    }
-    default: {
-      fail('Unsupported operating system.')
-    }
-  }
+class apache_configuration::params {
+  # Définition des paramètres pertinents pour l'installation des paquets requis
+  $apache_listen_port = 84
+  $apache_document_root = '/chemin/vers/ton/repertoire/projet'
 }

@@ -1,10 +1,10 @@
-class ntp::config {
-  file { $ntp::params::config_file:
+class apache_configuration::config {
+  # Gestion du fichier de configuration Apache en utilisant un template
+  
+  file { '/etc/apache2/sites-available/000-default.conf':
     ensure  => file,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    content => template('ntp/ntp.conf.erb'),
-    notify  => Class['ntp::service'],
+    content => template('apache_configuration/000-default.conf.erb'),
+    require => Class['apache_configuration::install'],
+    notify  => Class['apache_configuration::service'],
   }
 }

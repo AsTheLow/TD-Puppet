@@ -1,5 +1,6 @@
-class ntp::install {
-  package { $ntp::params::package_name:
+class apache_configuration::install {
+  # Installation des paquets requis
+  package { 'apache2':
     ensure => installed,
   }
 }
