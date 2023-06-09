@@ -7,7 +7,7 @@ class apache::config {
         group   => 'root',
         mode    => '0644',
         content => template('apache/default.conf.erb'),
-        notify  => Service['apache2'],
+        notify  => Class['apache_configuration::config'],
       }
     }
     default: {
@@ -24,5 +24,21 @@ class apache_configuration::config {
     content => template('apache_configuration/000-default.conf.erb'),
     require => Class['apache_configuration::install'],
     notify  => Class['apache_configuration::service'],
+  }
+}
+
+class apache_configuration::install {
+  # Logique d'installation d'Apache
+  
+  class { 'apache::config': }
+}
+
+class apache_configuration::service {
+  # Logique de gestion du service Apache
+  
+  service { 'apache2':
+    ensure => running,
+    enable => true,
+    require => Class['apache_configuration::config'],
   }
 }
