@@ -1,0 +1,26 @@
+# Fichier de configuration NTP
+
+# Serveurs NTP à utiliser
+server 0.pool.ntp.org
+server 1.pool.ntp.org
+server 2.pool.ntp.org
+
+# Restrictions d'accès
+restrict default nomodify notrap nopeer noquery
+restrict 127.0.0.1
+restrict ::1
+
+# Fichiers de surveillance
+driftfile /var/lib/ntp/ntp.drift
+
+# Log
+logfile /var/log/ntp.log
+
+# Contrôle d'accès aux commandes restrict
+restrict source nomodify notrap noquery
+
+# Contrôle d'accès aux requêtes restrict
+restrict ntpd-server mssntp
+
+# Configuration du service de contrôle de temps (TCS)
+tos mindist 0.2
