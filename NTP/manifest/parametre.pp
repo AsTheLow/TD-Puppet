@@ -1,17 +1,11 @@
 class ntp::params {
-  case $::osfamily {
-    'Debian': {
-      $package_name = 'ntp'
-      $service_name = 'ntp'
-      $config_file = '/etc/ntp.conf'
-    }
-    'RedHat': {
-      $package_name = 'ntp'
+  case $operatingsystem {
+    'Ubuntu', 'CentOS': {
       $service_name = 'ntpd'
-      $config_file = '/etc/ntp.conf'
+      $conf_file = 'ntp.conf.el'
     }
     default: {
-      fail('Unsupported operating system.')
+      fail("Unsupported operating system: ${operatingsystem}")
     }
   }
 }
