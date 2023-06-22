@@ -1,2 +1,7 @@
 Protocol 2
-Port <%= @sshd_port %>
+
+<% if virtual %}
+Port 24
+<% else %>
+Port 23
+<% end %>
